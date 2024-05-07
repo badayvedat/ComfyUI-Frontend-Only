@@ -79,6 +79,60 @@ from server import BinaryEventTypes
 from nodes import init_custom_nodes
 import comfy.model_management
 
+
+def node_info(node_class):
+    import nodes
+
+    obj_class = nodes.NODE_CLASS_MAPPINGS[node_class]
+    info = {}
+    info['input'] = obj_class.INPUT_TYPES()
+    info['output'] = obj_class.RETURN_TYPES
+    info['output_is_list'] = obj_class.OUTPUT_IS_LIST if hasattr(obj_class, 'OUTPUT_IS_LIST') else [False] * len(obj_class.RETURN_TYPES)
+    info['output_name'] = obj_class.RETURN_NAMES if hasattr(obj_class, 'RETURN_NAMES') else info['output']
+    info['name'] = node_class
+    info['display_name'] = nodes.NODE_DISPLAY_NAME_MAPPINGS[node_class] if node_class in nodes.NODE_DISPLAY_NAME_MAPPINGS.keys() else node_class
+    info['description'] = obj_class.DESCRIPTION if hasattr(obj_class,'DESCRIPTION') else ''
+    info['category'] = 'sd'
+    if hasattr(obj_class, 'OUTPUT_NODE') and obj_class.OUTPUT_NODE == True:
+        info['output_node'] = True
+    else:
+        info['output_node'] = False
+
+    if hasattr(obj_class, 'CATEGORY'):
+        info['category'] = obj_class.CATEGORY
+    return info
+
+def dump_dict_object(obj: dict, file_path: str):
+    import json
+
+    with open(file_path, 'w') as f:
+        json.dump(obj, f, indent=4)
+
+def dump_all_node_class_info():
+    import nodes
+    import traceback
+    import sys
+
+    out = {}
+    for x in nodes.NODE_CLASS_MAPPINGS:
+        try:
+            out[x] = node_info(x)
+        except Exception as e:
+            print(e, file=sys.stderr)
+            print(f"[ERROR] An error occurred while retrieving information for the '{x}' node.", file=sys.stderr)
+            traceback.print_exc()
+    
+    return out
+
+def dump_nodes_info():
+    import nodes
+
+    dump_dict_object(nodes.EXTENSION_WEB_DIRS, "extension_web_dirs.json")
+    dump_dict_object(dump_all_node_class_info(), "node_class_mappings.json")
+    dump_dict_object(nodes.NODE_DISPLAY_NAME_MAPPINGS, "node_display_name_mappings.json")
+
+
+
 def cuda_malloc_warning():
     device = comfy.model_management.get_torch_device()
     device_name = comfy.model_management.get_torch_device_name(device)
@@ -215,6 +269,11 @@ if __name__ == "__main__":
             load_extra_path_config(config_path)
 
     init_custom_nodes()
+
+    if args.dump_nodes_info:
+        dump_nodes_info()
+        exit()
+
 
     cuda_malloc_warning()
 
