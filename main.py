@@ -4,6 +4,7 @@ import asyncio
 import os
 
 import folder_paths
+from nodes import init_custom_nodes
 import server
 from comfy.cli_args import args
 
@@ -24,6 +25,7 @@ if __name__ == "__main__":
         print(f"Setting input directory to: {input_dir}")
         folder_paths.set_input_directory(input_dir)
 
+    init_custom_nodes()
     server.add_routes()
 
     call_on_start = None
