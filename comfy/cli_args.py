@@ -118,7 +118,6 @@ parser.add_argument("--multi-user", action="store_true", help="Enables per-user 
 
 parser.add_argument("--verbose", action="store_true", help="Enables more debug prints.")
 
-parser.add_argument("--dump-nodes-info", action="store_true", help="Dump nodes info.")
 
 if comfy.options.args_parsing:
     args = parser.parse_args()

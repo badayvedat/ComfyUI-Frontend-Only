@@ -3,9 +3,14 @@
 import asyncio
 import os
 
+import comfy.options
+comfy.options.enable_args_parsing()
+
 import folder_paths
 from nodes import init_custom_nodes
 import server
+
+
 from comfy.cli_args import args
 
 
