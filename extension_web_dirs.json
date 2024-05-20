@@ -1,12 +1,12 @@
 {
-    "ComfyUI-Manager": "/Users/vedatbaday/fal-ai/ComfyUI-fal/custom_nodes/ComfyUI-Manager/js",
-    "rgthree-comfy": "/Users/vedatbaday/fal-ai/ComfyUI-fal/custom_nodes/rgthree-comfy/web/comfyui",
-    "ComfyUI-Impact-Pack": "/Users/vedatbaday/fal-ai/ComfyUI-fal/custom_nodes/ComfyUI-Impact-Pack/js",
-    "ComfyUI-KJNodes": "/Users/vedatbaday/fal-ai/ComfyUI-fal/custom_nodes/ComfyUI-KJNodes/web",
-    "ComfyUI-Inspire-Pack": "/Users/vedatbaday/fal-ai/ComfyUI-fal/custom_nodes/ComfyUI-Inspire-Pack/js",
-    "ComfyUI-AnimateDiff-Evolved": "/Users/vedatbaday/fal-ai/ComfyUI-fal/custom_nodes/ComfyUI-AnimateDiff-Evolved/web",
-    "ComfyUI-fal-connector": "/Users/vedatbaday/fal-ai/ComfyUI-fal/custom_nodes/ComfyUI-fal-connector/js",
-    "ComfyUI-VideoHelperSuite": "/Users/vedatbaday/fal-ai/ComfyUI-fal/custom_nodes/ComfyUI-VideoHelperSuite/web",
-    "comfy_mtb": "/Users/vedatbaday/fal-ai/ComfyUI-fal/custom_nodes/comfy_mtb/web",
-    "ComfyUI-AudioScheduler": "/Users/vedatbaday/fal-ai/ComfyUI-fal/custom_nodes/ComfyUI-AudioScheduler/web"
+    "ComfyUI-Manager": "custom_nodes/ComfyUI-Manager/js",
+    "rgthree-comfy": "custom_nodes/rgthree-comfy/web/comfyui",
+    "ComfyUI-Impact-Pack": "custom_nodes/ComfyUI-Impact-Pack/js",
+    "ComfyUI-KJNodes": "custom_nodes/ComfyUI-KJNodes/web",
+    "ComfyUI-Inspire-Pack": "custom_nodes/ComfyUI-Inspire-Pack/js",
+    "ComfyUI-AnimateDiff-Evolved": "custom_nodes/ComfyUI-AnimateDiff-Evolved/web",
+    "ComfyUI-fal-connector": "custom_nodes/ComfyUI-fal-connector/js",
+    "ComfyUI-VideoHelperSuite": "custom_nodes/ComfyUI-VideoHelperSuite/web",
+    "comfy_mtb": "custom_nodes/comfy_mtb/web",
+    "ComfyUI-AudioScheduler": "custom_nodes/ComfyUI-AudioScheduler/web"
 }
