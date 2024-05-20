@@ -163,6 +163,8 @@ class PromptServer:
             )
 
             for name, dir in nodes.EXTENSION_WEB_DIRS.items():
+                custom_nodes_dir = folder_paths.get_folder_paths("custom_nodes")
+                full_path = os.path.join(custom_nodes_dir[0], dir)
                 files = glob.glob(
                     os.path.join(glob.escape(dir), "**/*.js"), recursive=True
                 )
