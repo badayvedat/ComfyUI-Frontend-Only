@@ -149,6 +149,13 @@ def load_json_file(file_path: str) -> dict:
 
 EXTENSION_WEB_DIRS = load_json_file("extension_web_dirs.json")
 
+for extension_name, extension_dir in EXTENSION_WEB_DIRS.items():
+    custom_nodes_dir = folder_paths.get_folder_paths("custom_nodes")[0]
+    relative_dir = extension_dir.split("custom_nodes")[-1]
+    absolute_extension_dir = f"{custom_nodes_dir}/{relative_dir}"
+
+    EXTENSION_WEB_DIRS[extension_name] = absolute_extension_dir
+
 NODE_CLASS_MAPPINGS = load_json_file("node_class_mappings.json")
 
 NODE_DISPLAY_NAME_MAPPINGS = load_json_file("node_display_name_mappings.json")
