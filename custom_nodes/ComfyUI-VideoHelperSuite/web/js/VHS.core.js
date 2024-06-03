@@ -305,9 +305,6 @@ function addUploadWidget(nodeType, nodeData, widgetName, type="video") {
                     }
                     pathWidget.options.values.push(path);
                     pathWidget.value = path;
-                    if (pathWidget.callback) {
-                        pathWidget.callback(path)
-                    }
                 },
             });
         } else if (type == "video") {
@@ -324,9 +321,6 @@ function addUploadWidget(nodeType, nodeData, widgetName, type="video") {
                         const filename = fileInput.files[0].name;
                         pathWidget.options.values.push(filename);
                         pathWidget.value = filename;
-                        if (pathWidget.callback) {
-                            pathWidget.callback(filename)
-                        }
                     }
                 },
             });
@@ -350,7 +344,6 @@ function addVideoPreview(nodeType) {
         const previewNode = this;
         var previewWidget = this.addDOMWidget("videopreview", "preview", element, {
             serialize: false,
-            hideOnZoom: false,
             getValue() {
                 return element.value;
             },
@@ -995,12 +988,6 @@ app.registerExtension({
             //Disabled for safety as VHS_SaveImageSequence is not currently merged
             //addDateFormating(nodeType, "directory_name", timestamp_widget=true);
             //addTimestampWidget(nodeType, nodeData, "directory_name")
-        } else if (nodeData?.name == "VHS_BatchManager") {
-            chainCallback(nodeType.prototype, "onNodeCreated", function() {
-                this.widgets.push({name: "count", type: "dummy", value: 0,
-                    computeSize: () => {return [0,-4]},
-                    afterQueued: function() {this.value++;}});
-            });
         }
     },
     async getCustomWidgets() {

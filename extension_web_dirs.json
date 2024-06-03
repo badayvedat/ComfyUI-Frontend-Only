@@ -1,12 +1,10 @@
 {
-    "ComfyUI-Manager": "custom_nodes/ComfyUI-Manager/js",
-    "rgthree-comfy": "custom_nodes/rgthree-comfy/web/comfyui",
-    "ComfyUI-Impact-Pack": "custom_nodes/ComfyUI-Impact-Pack/js",
-    "ComfyUI-KJNodes": "custom_nodes/ComfyUI-KJNodes/web",
-    "ComfyUI-Inspire-Pack": "custom_nodes/ComfyUI-Inspire-Pack/js",
-    "ComfyUI-AnimateDiff-Evolved": "custom_nodes/ComfyUI-AnimateDiff-Evolved/web",
-    "ComfyUI-fal-connector": "custom_nodes/ComfyUI-fal-connector/js",
-    "ComfyUI-VideoHelperSuite": "custom_nodes/ComfyUI-VideoHelperSuite/web",
-    "comfy_mtb": "custom_nodes/comfy_mtb/web",
-    "ComfyUI-AudioScheduler": "custom_nodes/ComfyUI-AudioScheduler/web"
+    "ComfyUI-Impact-Pack": "/Users/vedatbaday/repos/ComfyUI-Frontend-Only/custom_nodes/ComfyUI-Impact-Pack/js",
+    "ComfyUI-KJNodes": "/Users/vedatbaday/repos/ComfyUI-Frontend-Only/custom_nodes/ComfyUI-KJNodes/web",
+    "ComfyUI-Inspire-Pack": "/Users/vedatbaday/repos/ComfyUI-Frontend-Only/custom_nodes/ComfyUI-Inspire-Pack/js",
+    "ComfyUI-AnimateDiff-Evolved": "/Users/vedatbaday/repos/ComfyUI-Frontend-Only/custom_nodes/ComfyUI-AnimateDiff-Evolved/web",
+    "ComfyUI-fal-Connector": "/Users/vedatbaday/repos/ComfyUI-Frontend-Only/custom_nodes/ComfyUI-fal-Connector/js",
+    "ComfyUI-VideoHelperSuite": "/Users/vedatbaday/repos/ComfyUI-Frontend-Only/custom_nodes/ComfyUI-VideoHelperSuite/web",
+    "comfy_mtb": "/Users/vedatbaday/repos/ComfyUI-Frontend-Only/custom_nodes/comfy_mtb/web",
+    "ComfyUI-AudioScheduler": "/Users/vedatbaday/repos/ComfyUI-Frontend-Only/custom_nodes/ComfyUI-AudioScheduler/web"
 }

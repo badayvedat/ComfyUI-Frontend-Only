@@ -13,7 +13,7 @@ import { app } from '../../scripts/app.js'
 export function makeUUID() {
   let dt = new Date().getTime()
   const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-    const r = ((dt + Math.random() * 16) % 16) | 0
+    const r = (dt + Math.random() * 16) % 16 | 0
     dt = Math.floor(dt / 16)
     return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
   })
@@ -65,8 +65,8 @@ function createLogger(emoji, color, consoleMethod = 'log') {
   }
 }
 
-export const infoLogger = createLogger('i', 'yellow')
-export const warnLogger = createLogger('!', 'orange', 'warn')
+export const infoLogger = createLogger('ℹ️', 'yellow')
+export const warnLogger = createLogger('⚠️', 'orange', 'warn')
 export const errorLogger = createLogger('🔥', 'red', 'error')
 export const successLogger = createLogger('✅', 'green')
 
@@ -155,11 +155,9 @@ export function getWidgetType(config) {
 }
 export const setupDynamicConnections = (nodeType, prefix, inputType) => {
   const onNodeCreated = nodeType.prototype.onNodeCreated
-  // check if it's a list
-  const inputList = typeof inputType === 'object'
   nodeType.prototype.onNodeCreated = function () {
     const r = onNodeCreated ? onNodeCreated.apply(this, arguments) : undefined
-    this.addInput(`${prefix}_1`, inputList ? '*' : inputType)
+    this.addInput(`${prefix}_1`, inputType)
     return r
   }
 
@@ -173,7 +171,7 @@ export const setupDynamicConnections = (nodeType, prefix, inputType) => {
     const r = onConnectionsChange
       ? onConnectionsChange.apply(this, arguments)
       : undefined
-    dynamic_connection(this, index, connected, `${prefix}_`, inputList)
+    dynamic_connection(this, index, connected, `${prefix}_`, inputType)
   }
 }
 export const dynamic_connection = (
@@ -187,8 +185,6 @@ export const dynamic_connection = (
   if (!node.inputs[index].name.startsWith(connectionPrefix)) {
     return
   }
-  const listConnection = typeof connectionType === 'object'
-
   // remove all non connected inputs
   if (!connected && node.inputs.length > 1) {
     log(`Removing input ${index} (${node.inputs[index].name})`)
@@ -220,7 +216,7 @@ export const dynamic_connection = (
 
     log(`Adding input ${nextIndex + 1} (${name})`)
 
-    node.addInput(name, listConnection ? '*' : connectionType)
+    node.addInput(name, connectionType)
   }
 }
 
@@ -499,7 +495,7 @@ export const addDeprecation = (nodeType, reason) => {
     reason: 'font-size:1.2em',
   }
   console.log(
-    `%c!  ${title} is deprecated:%c ${reason}`,
+    `%c⚠️  ${title} is deprecated:%c ${reason}`,
     styles.title,
     styles.reason,
   )

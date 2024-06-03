@@ -1,3 +1,0 @@
-fal-client>=0.3.0
-httpx
-httpx-sse

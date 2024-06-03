@@ -2,7 +2,7 @@ import { app } from "../../scripts/app.js";
 import { api } from "../../scripts/api.js";
 import { $el } from "../../scripts/ui.js";
 import { getJSTemplate } from "./js_template.js";
-import "./playground.js";
+import { getDefaultWorkflow } from "./default_workflow.js";
 
 let processingQueue = false;
 
@@ -546,6 +546,7 @@ styleElement.innerHTML = cssCode;
 document.head.appendChild(styleElement);
 
 async function sendReadyMessage() {
+  const defaultWorkflow = await getDefaultWorkflow();
   window.parent.postMessage({ type: "editor-ready" }, "*");
 }
 
@@ -555,9 +556,15 @@ async function addfalListeners() {
       app.loadApiJson(event.data.data);
     } else if (event.data.type === "fal-request-workflow") {
       getfalAPIJson().then(async (workflow) => {
-        console.log("response to fal-request-workflow", workflow);
         window.parent.postMessage(
           { type: "fal-get-workflow", data: workflow },
+          "*",
+        );
+      });
+    } else if (event.data.type === "fal-request-update-workflow") {
+      getfalAPIJson().then(async (workflow) => {
+        window.parent.postMessage(
+          { type: "fal-update-workflow", data: workflow },
           "*",
         );
       });
